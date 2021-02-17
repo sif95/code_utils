@@ -1,5 +1,5 @@
 #define BACKWARD_HAS_DW 1
-#include "backward.hpp"
+#include "code_utils/backward.hpp"      // fixed including path, by qxc
 namespace backward
 {
 backward::SignalHandling sh;
@@ -7,8 +7,10 @@ backward::SignalHandling sh;
 
 #include <code_utils/sys_utils/tic_toc.h>
 #include <iostream>
-#include <opencv2/opencv.hpp>
+#include <opencv4/opencv2/opencv.hpp>
 #include <time.h>
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/calib3d/calib3d.hpp>
 
 using namespace std;
 using namespace cv;
@@ -81,7 +83,7 @@ void
 test1( )
 {
     Mat img;
-    Mat img1 = imread( "/home/gao/IMG_1.png", CV_LOAD_IMAGE_GRAYSCALE );
+    Mat img1 = imread( "/home/lbackpack/IMG_1.png", IMREAD_GRAYSCALE );
 
     sys_utils::tic::TicTocPart time;
 
@@ -91,7 +93,7 @@ test1( )
     std::cout << "sumPixelRow cost " << time.toc( ) << " ms\n";
 
     cv::Mat img2;
-    normalize( img, img2, 0, 255, CV_MINMAX );
+    normalize( img, img2, 0, 255, cv::NORM_MINMAX );
     Mat imageIntegralNorm;
     convertScaleAbs( img2, imageIntegralNorm );
 
@@ -104,7 +106,7 @@ void
 test2( )
 {
     Mat img;
-    Mat img1 = imread( "/home/gao/IMG_1.png", CV_LOAD_IMAGE_GRAYSCALE );
+    Mat img1 = imread( "/home/lbackpack/IMG_1.png", IMREAD_GRAYSCALE );
 
     sys_utils::tic::TicTocPart time;
 
@@ -114,7 +116,7 @@ test2( )
     std::cout << "sumPixelRow cost " << time.toc( ) << " ms\n";
 
     cv::Mat img2;
-    normalize( img, img2, 0, 255, CV_MINMAX );
+    normalize( img, img2, 0, 255, cv::NORM_MINMAX );
     Mat imageIntegralNorm;
     convertScaleAbs( img2, imageIntegralNorm );
 
