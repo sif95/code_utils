@@ -18,6 +18,8 @@ cmake ../ceres-solver-1.14.0
 make -j3
 make install</pre>
 
+sudo apt-get install libdw-dev
+  
 <p>Use the following commands to download and compile the package.</p>
 <pre><code>cd ~/catkin_ws/src
 git clone https://github.com/Rotoslider/code_utils
